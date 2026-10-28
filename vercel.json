@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/img/:path*", "destination": "/:path*" },
+    { "source": "/logos/:path*", "destination": "/:path*" },
+    { "source": "/vid/:path*", "destination": "/:path*" }
+  ]
+}
