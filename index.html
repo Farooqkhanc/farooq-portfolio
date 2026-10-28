@@ -191,7 +191,7 @@ section.block{padding-block:120px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cue i{animation:none}}
 
 /* Keep mobile particles subtle against the text. */
-@media (max-width: 700px){#sky{opacity:0.48}}
+@media (max-width: 1000px){#sky{opacity:0.72}}
 </style>
 
 <canvas id="sky" aria-hidden="true"></canvas>
@@ -396,7 +396,7 @@ const LOGO_MASK = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAt4AAAI+CAYAAAC
 (async function(){
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const canvas = document.getElementById('sky');
-const small = Math.min(innerWidth, innerHeight) < 700;
+const small = innerWidth <= 1000;
 const N = small ? 6500 : 12000;            // particles that build the shapes
 const NB = small ? 700 : 1400;             // distant still stars
 const KEEP = 0.2;                          // share of particles still visible while they float
@@ -564,7 +564,8 @@ function resize(){
   renderer.setSize(W, H, false);
   camera.aspect = W/H; camera.updateProjectionMatrix();
   halfH = TAN*CAMZ; halfW = halfH*camera.aspect;
-  mat.uniforms.uScale.value = H*0.9; bmat.uniforms.uScale.value = H*1.4;
+  const particleScale = W <= 1000 ? Math.min(H, W * 0.85) : H;
+  mat.uniforms.uScale.value = particleScale*0.9; bmat.uniforms.uScale.value = particleScale*1.4;
   buildFloat(); buildTargets();
 }
 try{ await Promise.race([Promise.all([logoImg.decode(), document.fonts.load('700 200px "Mona Sans"')]), new Promise(r=>setTimeout(r,1800))]); }catch(e){}
