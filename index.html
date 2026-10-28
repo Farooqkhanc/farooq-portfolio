@@ -1,0 +1,689 @@
+<title>Farooq Khan Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap">
+<style>
+/* Layout: a black sky that scrolls like one long film. Text sits centred and quiet; three empty "frames" let the particles become the logo, a planet, and the word Design. */
+:root{
+  --void:#000;            /* page */
+  --nebula-a:rgba(70,82,160,.10);
+  --nebula-b:rgba(150,80,130,.07);
+  --cream:#eeeae2;        /* main text */
+  --dim:#8d8c86;          /* secondary text */
+  --hair:rgba(238,234,226,.14);
+  --coral:#ef7959;        /* accent, used sparingly */
+  --sans:'Mona Sans',Arial,sans-serif;
+  --serif:Georgia,'Instrument Serif','Times New Roman',serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--void)}
+body{margin:0;background:var(--void);color:var(--cream);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(60% 45% at 22% 18%,var(--nebula-a),transparent 70%),radial-gradient(55% 45% at 82% 78%,var(--nebula-b),transparent 70%)}
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
+main{position:relative;z-index:1}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+
+/* nav */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--void)}
+.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:20;background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.55) 60%,transparent)}
+.nav .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;height:64px;max-width:1000px}
+.nav .pill{justify-self:end}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:15px;letter-spacing:-.01em}
+.brand img{width:22px;height:auto}
+.links{display:flex;gap:30px;font-size:16px}
+.links a{text-decoration:none;color:#cfcdc6;transition:color .2s}
+.links a:hover{color:var(--cream)}
+.pill{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 15px;border-radius:999px;background:var(--cream);color:#000;text-decoration:none;font-size:13.5px;font-weight:500}
+.pill.ghost{background:rgba(238,234,226,.08);color:var(--cream);border:1px solid var(--hair);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+
+/* hero */
+.hero{position:relative;height:100svh;min-height:560px}
+.side{position:absolute;top:47.5%;transform:translateY(-50%);font-size:clamp(34px,4.2vw,68px);font-weight:500;letter-spacing:-.03em;text-shadow:0 6px 30px rgba(0,0,0,.6)}
+.side.l{left:max(24px,13vw)}
+.side.r{right:max(24px,16.5vw)}
+.cue{position:fixed;z-index:15;pointer-events:none;transition:opacity .5s;bottom:calc(14px + env(safe-area-inset-bottom,0px))!important;left:0;right:0;bottom:calc(30px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:center;gap:12px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.cue i{width:1px;height:42px;background:linear-gradient(var(--cream),transparent);animation:drop 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes drop{0%{transform:scaleY(0);opacity:1}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+
+/* statement */
+.statement{text-align:center;padding-block:40px 120px}
+.statement h2{margin:0 auto;max-width:17ch;font-size:clamp(34px,4.6vw,64px);line-height:1.05;font-weight:500;letter-spacing:-.035em;text-wrap:balance}
+.statement p{margin:28px auto 0;max-width:56ch;color:var(--dim);font-size:clamp(16px,1.3vw,19px);text-wrap:pretty}
+
+.label{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.sec-head h2{margin:0;font-size:clamp(32px,4vw,56px);font-weight:500;letter-spacing:-.035em;line-height:1}
+section.block{padding-block:120px}
+
+/* portfolio */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{position:relative;display:block;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:#0d0d0f;text-decoration:none;max-width:100%}
+.card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.card:hover img{transform:scale(1.04)}
+.cap{position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-direction:column;gap:2px;padding:10px 13px;border-radius:8px;
+  background:rgba(12,12,14,.32);border:1px solid rgba(255,255,255,.16);backdrop-filter:saturate(160%) blur(16px);-webkit-backdrop-filter:saturate(160%) blur(16px);
+  opacity:0;transform:translateY(8px);transition:opacity .35s,transform .45s}
+.card:hover .cap,.card:focus-visible .cap{opacity:1;transform:none}
+.cap b{font-weight:500;font-size:15px;color:#fff}
+.cap span{font-size:12.5px;color:rgba(255,255,255,.72)}
+.card:focus-visible,.pill:focus-visible,.links a:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+
+/* empty frames for particle shapes */
+.frame{position:relative}
+.frame.orbit{height:180svh}
+.frame.word{height:160svh}
+.frame-note{position:absolute;left:0;right:0;top:calc(50% - 36vh);text-align:center;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--cream)}
+
+/* experience */
+.jobs{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}
+.job{display:grid;grid-template-columns:150px minmax(0,1fr) minmax(0,1.3fr);gap:24px;padding:30px 0;border-bottom:1px solid var(--hair)}
+.job .yr{color:var(--dim);font-variant-numeric:tabular-nums;font-size:15px}
+.job h3{margin:0;font-size:22px;font-weight:500;letter-spacing:-.02em}
+.job .where{color:var(--dim);font-size:15px;margin-top:4px}
+.job ul{margin:0;padding-left:18px;color:#bdbbb3;font-size:15px}
+.job li+li{margin-top:6px}
+.now{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--coral);border:1px solid rgba(239,121,89,.4);vertical-align:middle}
+
+/* clients */
+.clients{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;--cols:6}
+.clients li{flex:0 0 calc(100% / var(--cols));height:120px;display:grid;place-items:center;padding:22px 26px;box-shadow:inset 0 0 0 .5px var(--hair),0 0 0 .5px var(--hair);font-size:19px;font-weight:500;letter-spacing:-.015em;color:#cfcdc6;text-align:center;transition:color .2s,background .2s}
+.clients li:hover{color:#fff;background:rgba(238,234,226,.04)}
+
+.reel-sec{padding-bottom:0}
+.player{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000 url(img/onic-night.webp) center/cover;border:1px solid var(--hair);max-width:100%}
+.player video,.player iframe,.player .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border:0}
+.yt{margin:14px 0 0;text-align:right;font-size:14px}.yt a{color:var(--dim)}
+.play{position:absolute;left:50%;top:50%;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(10,10,12,.35);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;cursor:pointer;transition:transform .3s,opacity .3s}
+.play svg{width:34px;height:34px;margin-left:4px}
+.play:hover{transform:scale(1.06)}
+.player.playing .play{opacity:0;pointer-events:none}
+.pbar{position:absolute;left:14px;right:14px;bottom:14px;display:flex;align-items:center;gap:14px;padding:10px 14px;border-radius:10px;background:rgba(10,10,12,.35);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:13px;opacity:0;transition:opacity .3s}
+.player.playing .pbar,.player:hover .pbar{opacity:1}
+.pbar button{background:none;border:0;color:#fff;cursor:pointer;font:inherit}
+.track{flex:1;height:2px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden}
+.track i{display:block;height:100%;width:0;background:var(--cream)}
+.rname{color:rgba(255,255,255,.75);white-space:nowrap}
+@media (max-width:640px){
+  .details{grid-template-columns:1fr 1fr}.rname{display:none}.play{width:68px;height:68px;margin:-34px 0 0 -34px}}
+/* client logos */
+.clients img{max-width:min(130px,100%);max-height:62px;width:auto;height:auto;object-fit:contain;opacity:.62;transition:opacity .25s}
+.clients li:hover img{opacity:1}
+/* card show more */
+.card.more{display:none}.grid.open .card.more{display:block}
+.more-row{display:flex;justify-content:center;margin-top:34px}
+/* services */
+.svc-head{text-align:center;margin-bottom:46px}
+.svc-head h2{margin:0;font-size:clamp(40px,5vw,72px);font-weight:500;letter-spacing:-.04em;line-height:1}
+.svc-head p{margin:18px auto 0;max-width:46ch;color:#bdbbb3;font-size:17px}
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.svc{position:relative;overflow:hidden;padding:24px 22px 22px;border-radius:14px;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid rgba(238,234,226,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:10px;min-height:230px}
+.svc .num{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums}
+.svc .obj{position:absolute;top:10px;right:10px;width:118px;height:118px;filter:drop-shadow(0 10px 22px rgba(0,0,0,.6));transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.svc:hover .obj{transform:rotate(-8deg) scale(1.06)}
+.svc h3{margin:6px 0 0;font-size:22px;font-weight:500;letter-spacing:-.02em;line-height:1.15;max-width:calc(100% - 110px)}
+.svc p{margin:0;color:#b4b2aa;font-size:15px;max-width:30ch}
+.tags{list-style:none;margin:auto 0 0;padding:14px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.tags li{padding:6px 12px;border-radius:999px;font-size:12.5px;color:#dedcd5;background:rgba(238,234,226,.07);border:1px solid rgba(238,234,226,.12)}
+.svc-cta{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:40px;flex-wrap:wrap}
+.svc-cta .pill{height:44px;padding:0 22px;font-size:15px}
+.svc-cta .dash{width:28px;height:1px;background:var(--hair)}
+.reel{display:inline-flex;align-items:center;gap:12px;text-decoration:underline;text-underline-offset:4px;font-size:15px}
+.reel i{width:38px;height:38px;border-radius:50%;border:1px solid rgba(238,234,226,.5);display:grid;place-items:center;font-style:normal;font-size:11px}
+
+/* end */
+.end{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-block:120px 40px}
+.end h2{margin:0;font-size:clamp(56px,12vw,190px);line-height:.9;font-weight:600;letter-spacing:-.06em}
+.end .quote{margin:22px 0 0;font-family:var(--serif);font-style:italic;font-size:clamp(26px,3.4vw,46px);line-height:1.1;color:var(--coral);letter-spacing:-.02em}
+.details{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px 24px;margin-top:70px;padding-top:28px;border-top:1px solid var(--hair)}
+.details dt{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.details dd{margin:0;font-size:16px;overflow-wrap:anywhere}
+.details a{text-decoration:none;border-bottom:1px solid var(--hair)}
+.details a:hover{border-color:var(--cream)}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:70px;color:var(--dim);font-size:13px}
+
+/* project viewer */
+.viewer[hidden]{display:none!important}
+.viewer{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:calc(24px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px));background:rgba(0,0,0,.6);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);opacity:0;transition:opacity .35s}
+.viewer.on{opacity:1}
+.sheet{position:relative;width:min(1100px,100%);margin-top:4vh;border-radius:16px;background:linear-gradient(180deg,rgba(24,24,28,.92),rgba(10,10,12,.96));border:1px solid rgba(238,234,226,.14);box-shadow:0 40px 120px -30px rgba(0,0,0,.9);overflow:hidden;transform:translateY(24px);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.viewer.on .sheet{transform:none}
+.sheet .media{background:#000}
+.sheet video,.sheet .media img{display:block;width:100%;max-height:72vh;object-fit:contain;background:#000}
+.sheet .body{padding:28px 30px 34px;display:grid;grid-template-columns:1.1fr 1fr;gap:28px}
+.sheet h3{margin:6px 0 0;font-size:clamp(28px,3vw,42px);font-weight:500;letter-spacing:-.03em;line-height:1.05}
+.sheet .meta{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.sheet .sum{margin:14px 0 0;color:#cfcdc6}
+.sheet h4{margin:0 0 6px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:500}
+.sheet .col p{margin:0 0 18px;color:#b4b2aa;font-size:15px}
+.thumbs{display:flex;gap:10px;padding:0 30px 30px;flex-wrap:wrap}
+.thumbs button{width:120px;aspect-ratio:16/10;border-radius:8px;overflow:hidden;border:1px solid rgba(238,234,226,.18);padding:0;background:#000;cursor:pointer;opacity:.6;transition:opacity .2s}
+.thumbs button.on,.thumbs button:hover{opacity:1;border-color:var(--cream)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.thumbs .vid{display:grid;place-items:center;color:var(--cream);font-size:13px}
+.x{position:absolute;top:14px;right:14px;z-index:2;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.45);color:#fff;font-size:20px;cursor:pointer;backdrop-filter:blur(10px)}
+.navp{position:absolute;top:30%;z-index:2;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.45);color:#fff;cursor:pointer}
+.navp.p{left:14px}.navp.n{right:14px}
+.x:focus-visible,.navp:focus-visible,.thumbs button:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+@media (max-width:760px){.sheet .body{grid-template-columns:1fr;padding:22px}.thumbs{padding:0 22px 22px}}
+
+@media (max-width:980px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .services{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .clients{--cols:3}
+  .job{grid-template-columns:110px minmax(0,1fr)}
+  .job ul{grid-column:2}
+}
+@media (max-width:640px){
+  .links{display:none}
+  .clients{--cols:2}
+  .side.l{left:max(16px,env(safe-area-inset-left,0px))}.side.r{right:max(16px,env(safe-area-inset-right,0px))}
+  .grid,.services{grid-template-columns:1fr}
+  .job{grid-template-columns:1fr;gap:10px}
+  .job ul{grid-column:auto}
+  .side{top:auto;bottom:110px;transform:none;font-size:22px}
+  .cap{opacity:1;transform:none}
+  section.block{padding-block:90px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cue i{animation:none}}
+</style>
+
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAt4AAAI+CAYAAACL0A3dAAAaIklEQVR42u3dz26c13nA4R9FC5BlZdFt7FhorHbVbSJvewu9gcAx0lbZ5QJ6Dd51gARukEvppjC9LFCgLZgA40jZt6EZoTY1XXxHDcNSEkXNN5oZPg8gSILiRqb+8NeT97znYLVaBXCJg+rW+FL1bvXn1V9V/1B9v7rtwwQAl/qm+rfqJ9W/Vv/zjo8JcElkV92p3h9fvzO+/Wn1UfWh6AaAV7pTfVD9uloJbxDbty5E9kF1OL7/yfj6nXN/edwZPw4AvNjt8Xnz0fj+4wOjJnDjY/u98RfD88g+HP+58zHeuX/uwIcRAK7kWXVaPa6eCm8Q2x+M75+PbKENAOuxGgH+THjDfgf34bkRkZfFtsgGgJmZ8Yb9Pt3+sGn7yKdiGwCENzDf6fanI7w/FNsAILyB9QT3/UtOt89vIRHbACC8gTUE90+cbgOA8AbmD+77TrcBQHgDghsAhDcguAGAZt3lLbxhe92q7gpuAGgfXq98IryhrT3lvlc9rB5VDwQ3AOxkdP+++qL6ufCG7R0reTCi++GIcMENALvltDqqPqu+FN7Q1o+V3B0/DgDsjm+qZfWP1ZfVfwlvyFgJANC6R0xOquPx5cTlSmhrTrmNlQDAfs11f9l02r1sOv22ThDarlNuYyUAsB+XKT9rmu8+zR5vyCk3ADBXdH8xvv9MeENOuQGAzUS38IaccgMAvcmLlGdNlyePXhbdwhs2E93fqT52yg0A7eOLlMumzSWLl0W38IbNRffPcsoNAPs4WrIY4b0cIf7sRf+Q8IbNRPfH4/tOuQFg/zaXnDSNnKxe9g8Kb2jWS5SiGwBu2CVK4Q29lUuUohsARLfwBpcoAYBNRLfwBpcoAYANRLfwBpcoAYANRHfiAEQ3ADB/dAtvEN0AwAaiW3iD6AYANhDdwhtENwCwgegW3iC6AYANRLfwBtENAGwguoU3iG4AEN0biG7hDaIbAET3BqJbeIPoBgDRvYHoFt4gugFAdG8guoU3iG4AEN0biO6qd3zsQXQDwA2wqs6qk+po09EtvEF0A0A35JT7tFpWx9Vi09EtvEF0A8BNGi1ZjPBejhB/tsmfiPAG0Q0AN2We+6hp1OSsafQk4Q2iGwDY0UuUtpqA6AYA0f2WwwNEt+gGANEtvEF0AwC7Hd3CG9EtugFAdAtvEN0AwH5Et/BGdPszAACiW3iD6AYA9iO6hTeiGwAQ3cIbRDcAsB/RLbwR3QCA6BbeILoBgP2IbuGN6AYARPeGvOPXENENAGyxVXVWnVRHuxrdwhvRDQC05afcp9WyOq4WuxrdwhvRDQDswmjJYoT3coT4s138FxLe7LKD6rC6Vz0U3QCwt/PcR02jJmdNoycJb2ijp9x3q/vVg+qR6AYAlyiFN8w3WvJohPf9EeKiGwBEt/CGGea5HzaNmhw2jZ4AAKJbeINLlADATYxuD+ggugEA0S28QXQDgOgW3iC6AQDRLbwR3QCA6BbeILoBQHTfqOgW3ohuAEB0C29Et+gGANEtvEF0AwCiW3gjugEA0Z2XK0F0A8DeW1Vn1Ul1dNOjW3gjugGAZjrlPq2W1XG1uOnRLbwR3QDAnKMlixHeyxHiz27yB0Z4I7oBgLnmuY+aRk3OmkZPEt4gugEAlyhtNUF0AwCiW3iD6AYA0S26hTeiGwAQ3Znx5gY4qA6re9VD0Q0Aolt4Q7Occt+t7lcPqkeiGwBEt/CG+UZLHo3wvj9CXHQDgOgW3jDDPPfDplGTw6bREwBAdAtvcIkSALhg1fQIzknToziiW3gjugGA1n/Kfdr07Ptx0zPwolt4I7oBgJlGSxYjvJcjxEW38EZ0AwAzzHMfNY2anDWNniC8Ed0AgEuUwps8jAMAiG7hDXkYBwBEt+gW3ngYBwAQ3cIbD+MAAKIb4Y1LlACA6H7LMQWiGwBEt+gW3ohuAEB0C29ENwAguhHeiG4AQHQLb0Q3ACC6hTeiW3QDgOhGeCO6AQDRLbwR3QCA6EZ4I7oBQHSTlyvZpIOm597vNT3/LroBQHQjvGn9p9x3q/vVg+qR6AYA0Y3wZr7RkkcjvO+PEBfdACC6Ed7MMM/9sGnU5LBp9AQA2E2r6qw6qY5Et/DGJUoAoFlOuU+rZXVcLUS38EZ0AwDzjZYsRngvR4iLbuGN6AYAZpjnPmoaNTlrGj1BeCO6AQCXKD2gg+gGAEQ3whvRDQCiW3Rn1IS8RgkAiG6Ed16jBABEN8Ibr1ECAKJbeOM1SgBAdCO8Rbd5bgAQ3dhqgugGAES38EZ0AwCiG+GN6AYA0S26hTeiGwAQ3Qhv0Q0AiG6y1YS8RgkAiG7hTV6jBABmtarOqpPqSHQLb7xGCQA0yyn3abWsjquF6BbeeI0SAJhvtGQxwns5Qlx0C29cogQAZpjnPmoaNTlrGj1BeCO6AQCXKLFOUHQDAKIb4Y3oBgDRLbrFHqIbABDdCG/RDQCIbnK5krxGCQCIboR3XqMEAEQ3wttrlF6jBADRjfDGa5QAgOhGeLtECQCIbmw1QXQDgOgW3Qhv0Q0AiG6Et+gGAEQ3whvRDQCIboS36AYARDfCW3QDAKKbrBMkT8ADAKIb4Z0n4AEA0Y3wNlriCXgA2FOr6qw6qY5EN8LbE/AAQLOccp9Wy+q4WohuhLdLlABAs51yL0Z4L0eIi26Et+gGAFr/KffRiPCzEeUgvEU3ALCmC5ROuRHeohsAaP4LlE65Ed6iGwBYc3A/zQVKhLfoBgCae5b7N9UvxtdGSxDeeY0SAGjWjSVPjZYgvPMaJQAwy1iJWW6Et9coAYAZgttYCcLba5QAwAaD21gJwtslSgDgDWL72fjytPpKcCO8RTcAME9sP6m+rh5XnwtuhLfoBgDmie1fjq+ff19wI7xFNwAwQ2w/GT/+/D8ruBHeohsAuGJoJ7YR3nkYBwCYNbSfVt+Ob4tthHcexgEArhfYvSK0n4zvPxXbCG8P48A2fMJax5+PW73+vvqLP59b5/48zfHzfJt/f9zawD7/1YWP5YHft3v5ueiqv7bb+nG7+O/wuj/P8wH9PJzPXhHaiW2Et4dxEL+bdtknrNYwfnWnen98fd2fT+Of/+749u/W/PPsLY6nXffjc51f39+Nb393A/99u/z79ib8XtrGj9tl/w6v8/O8GNhn5/5eFdoIb5coEddb88nwRZ+w3tTh+CT6yfj68Jo/n8Y//6Px7V+t+ef5tlz343PdX99fje//aOb/vl3/fbvvv5e29eN28d+h1/x5XhbYCW1uxP/nvVqtRDdcHtkviuu3+cnwZZ+w3tT5E6yDN/j5XHbivQ+u8/G57q/vxRPvgz348zXX79t9/r20zR+3l514X4XARniLbtyc/7/Ifllcv+1PhnN9wjq4MJ993Z/PQX86473aoxGBWxv4++NF8/K7Tmhd7/fStn7cDl5wn8OvL9zQ8BbdXGdF1ZNzr5u9LK59kgEAMuMtunnxC2dXWVElrgEA4S26ecPnhK2oAgCEt+hmpti++MKZ0AYAhLfoZqbYFtoAgPDuzW9WHzY9hvNQdN+I4D4bMf1YbAMAwruNnXLfbXr2/UHTM/Cie/9Pt7+qflN9LrYBAOG92dGSRyO8748QF937fbr9+Qjvr8Q2ACC8NzvP/bBp1OSw3X/hjT8N7uUlp9uPx4+diW0AQHi7RMl6gvsXTrcBAOEtupk/uJdOtwEA4S26EdwAAHsT3tYF7qdn1angBgCEd9YF0pyn3CfVUbWojgU3ACC8rQtknrGS4xHdRyPCBTcAILytC6T5xkpOx48DAAhvlyjJWAkAwF6Ft+huL0+5jZUAAMJbdNPmTrmNlQAAwlt0k1NuAIC9Dm/RnVNuAADhLbrJKTcAwK6Gt9co9ye6f1994ZQbAGD7wttrlO3daMlnTrkBALYrvL1G2V6OlnzRdPLtlBsAYAvC22uUuUAJACC8XaIkFygBAHY5vEW3C5QAAMJbdJMLlAAAOx3eojsXKAEAmDe8RbfREgAAZg5v0Z3REgAA5g1v0Z3REgAA5g1v0W20BACAGcP7oOkRnHtNj+KI7oyWAACw3vC+1fTc+/2m598fie6MlgAAsNbwPj9a8miE9/0R4qI7z74DAPDm4X1xnvth06jJYdPoCXn2HQCANwtvlyhdoAQAYObwFt25QAkAwLzhLbpzgRIAgHnDW3QbLQEAYObwFt0ZLQEAYL7w9jBORksAAJg3vD2Mk93cAADMG94exslubgAA5g1vD+O4QAkAwMzh7RJlLlACADBveIvuXKAEAGD+8L6bzSW5QAkAwJzhfbvp8uRPqx+K7q0M7qcuUAIA7H5432vaXPJgfFt0t3VjJb+pfjG+dsoNALCj4f3X1d81nXrf9iFpm8dKnjrlBgDYTQer1erfq/ezp9tYCQAAs4b3tyO47el+O7H9bHx5Wn2VsRIAgPZ11OTQh+Gtnm4/rr4eX39+LriNlQAA7PmT8Wz2dPvzC/EtuAEAhDcznG5/NX7seZQLbgCAPQ3vs8x4O90GAGD28D7OVpN1hnYjqJ843QYAoHNbTf6m+ts8Fb+O0H5afTu+/Uun2wAAnA/vP2t6Kv5n4vtKkf2y0H4yvn/+x51uAwDQwWq1ujVi++MR3w+r98aP32q/5r8vi+hXOR/Rzy9Kviy0E9sAAFwW3s8D+3l8/331QdP8952m+e87e/LvezGiX+ViZD8fFRHaAABcK7yfx/fdEd13Rni/X30yvt71h3Yui+iucEJ+MbKFNgAAbxTejZGS5+MlXTjxPtiDMZPLIvpVRDYAAGsP7//34xdCfNeJaAAAtjK8AQCANbA2EAAA2szLlbDt9m3kCTKGByC8YRtDep8u+UJbfvFchAMIb/YotF8npA/3bK0ltMWrVh9XX4+vT3u9x8YAcLmSLTjJPh/ar7sf/mAPH3KCtvRxsa+r31aL6l+qEx8agJx4s5WxfdlJ9sUT6+u8iPr8/74xE5jvc8FfNJ1wf3/8WXtS/Wf1jQ8PgPBmu2L7vaZXTy+eZF92Yi2kYfv+TB+OL/eqB9VHTaffwhtAeLNlsf3B+P5lJ9lCG3bH7ep71Y+bTrz/IL4BhDfbF9sCG/aDexUAwpsN/8/Od87FtdiGm/d3gD/XAMKbDZxuf9h0yepTsQ0AILyZ73T70xHeH4ptAADhzXqC+/4lp9sfjB/zPzdDN/I1yzOvVwIIb9Yf3D9xug0Mz/rj65VPfTgAhDfXc6u6e0lw33e6DYzo/n31ZdPrlY+zShBAeNN1TrnvVQ+rR00PZAhu4GJ0f1F9Vh1Vpz4sAMKb642VPBjR/XBEuOAGLovuL8b3n/nQAAhveqOxkrvjxwFEN4DwJmMlgOgGEN607afcxkoA0Q0gvGlzp9zGSgDRDSC8ySk3ILoBhDc7Ed3fqT52yg10tdcoT5pWBYpuAOHNNaL7ZznlBnrpKfdptayOmx7HEd0AwptrRPfH4/tOuYGXjZYsRngvR4iLbgDhTVe7RCm6gdd9jfKkaeRk5cMDILzpypcoRTfgEiWA8MYlSkB0AyC8XaIERDcAwhuXKAHRDbB/YYfoBkQ3ADnxzuYS0Q2IbgDhTTaXAHmNEgDhbXMJkNcoARDe2FwCeI0SQHjjEiXgNUoAhHcuUQIuURotARDe5BIlILoBEN4uUQKiGwDh7RIlgOgGEN5knhsQ3QAI78xzA6IbAOFtnts8NyC6AYQ35rkB0Q2A8PYoDiC6ARDeuEQJXM+q6eXJk6aXKEU3gPAmlyiB1n7KfVotq+NqIboBhDcuUQLzjZYsRngvR4iLbgDhjUuUwAzz3EdNoyZnTaMnAAhvXKIEXKIEQHjnEiUgugEQ3rlECYhu0Q0gvHGJEhDdAAhvlygB0Q2A8HaJEiAP4wAgvEU3kIdxABDe2VwCeBgHAOGdzSWiG/AwDgDC2+YSwCVKAIS3zSWA6AYA4Z15bkB0AyC8M88NiG4AhLd5bkB0i24AhLd5bkB0AyC8PYoDiG4AbliAim7RDYhuAIS36AZENwAZNcm6QGD/rZpenjxpeolSdAMgvLMuEGjtp9yn1bI6rhaiGwDhbV0gMN9oyWKE93KEuOgGQHhbFwjMMM991DRqctY0egIANz68zXMDLlECILwzzw2IbgCEt3luQHSLbgCEt3luQHQDILw9igOIbgDYx/B2iRIQ3QAI71yiBEQ3AOx0eLtECYhuAIS3S5TAlls1PYJz0vQojugGQHhnnhto7afcp03Pvh83PQMvugEQ3pnnBuYZLVmM8F6OEBfdANz48DbPDcwxz33UNGpy1jR6AgA3OrzNcwMuUQIgvD2KA4huAHi9wBXdgOgGgBsW3qIbEN0ACG/RDYhuANj98L6bHd2A6AYglyvndLtpTeBPqx+KbiCvUQIgvJvj1P1e047uB+PbohvIa5QACO/WPmLyg6bT7vtNp98AXqMEQHg3z4jJD0aEA3iNEgDhvWbvVh9lxARwiRKAbDVpxtPu71Wfjq+NmACiGwDh3Xyn3R+NbwOIbgCEd+s/7f5u9eOcdgOiGwDhPZuD6r3qg+qOXwZAdAMgvOdxZ0T3eyPCAUQ3AMK7ecZMPhlfGzMBRDcAwjtjJoDoBoCdDG9jJoDoBkB4Z8wEEN0A0D68XPlu9X7GTIA/tWp67v2k6fl30Q2A8O7N5rsPxxdjJkDnTrlPq2V1XC1ENwDCuzee734/L1UCl4+WLEZ4L0eIi24AhHfmu4H1z3MfNY2anDWNngCA8O7NTrzNdwMuUQKQrSbNPuNtvhtEt+gGQHgDiG4AEN6A6AYA4Q0gugFAeAOiGwCENyC6AUB4A4huAGhX9ngDN8Oq6RGck6ZHcUQ3AMLbhwBo/afcp03Pvh83PQMvugEQ3j4EwEyjJYsR3ssR4qIbAOENMMM891HTqMlZ0+gJAAhvAJcoASBbTQDRDQDCGxDdohsAhDcgugEgM95AdnQDgPAGyI5uABDegB3dACC8ATu6AQDhDbhECQDZagKIbgAQ3oDoBgCENyC6AUB4A6IbAIQ3ILpFNwAIb0B0A0DWCQJ5Ah4AEN5AnoAHAOENeAIeAIQ34Al4AEB4Ay5RAkC2mgCiGwAQ3iC6RTcACG9AdAOA8AZENwAgvAHRDQDCGxDdACC8AdENAGSPN/Biq6ZHcE6aHsUR3QAgvIHWf8p92vTs+3HTM/CiGwCENzDTaMlihPdyhLjoBgDhDcwwz33UNGpy1jR6AgAIb8AlSgDIVhNAdAMAwhtEt+gGAOENiG4AQHiD6AYAcrkSyMM4ACC8gTyMAwAIb/AwDgAgvAEP4wCA8AZcogQAstUERDcAILwB0Q0ACG8Q3QBAZrwhO7rt6AYA4Q1kRzcAILzBjm4AQHgDdnQDAMIbXKIEALLVBEQ3ACC8AdENAAhvEN0AgPAG0S26AUB4A6IbABDeILoBAOENiG4AQHiD6AYA8oAO7LRV08uTJ00vUYpuAEB4Q+s/5T6tltVxtRDdAIDwhvlGSxYjvJcjxEU3ACC8YYZ57qOmUZOzptETAADhDS5RAgDZagKiGwDIiTdkc4nNJQCA8IZsLgEAhDfYXAIACG/A5hIAQHiDS5QAQLaagOgGABDeILoBAOENohsAEN4gugEAcrkS8jAOACC8IQ/jAADCG4yWeBgHABDe4GEcAEB4g0uUAADZagKiGwAQ3iC6AYCMmkDWBQIACG/IukAAQHiDdYEAAMIb6wIBAIQ3uEQJAGSrCYhuAADhjegW3QCA8AbRDQAIbxDdAADCG0Q3AJCtJpDXKAEAhDd5jRIAQHiD1ygBAOENXqMEABDeuETpQwMAZKsJiG4AAOGN6AYAyKgJWReYdYEAgPCGrAsEABDeWBcIACC8wbpAAEB4g0uUAADZaoLoBgAQ3iC6AQCEN6IbACAz3mRHt+gGAIQ3ZEc3AIDwxo5uAADhjei2oxsAEN7gEiUAQLaaILoBAIQ3iG4AgIyakHWBAADCm6wLBAAQ3mBdIACA8Ma6QAAA4Y1LlE65AQCy1QTRDQAgvBHdAADCG0Q3AEBmvMmObgAA4U12dAMACG+woxsAQHhjRzcAgPDGJUoAALLVBNENACC8Ed0AABk1IesCRTcAgPAm6wIBAIQ31gUCAAhvsC4QAEB44xIlAEC2miC6AQAQ3ohuAICMmpB1gQAAwpusCwQAQHhjXSAAgPDGukAAAIS3S5ROuQEAstUE0Q0AILwR3QAAZNQk6wKtCwQAEN5kXSAAgPDGukAAAIQ31gUCAAhvXKIEACBbTUQ3AADCG9ENAJBRE7IuEAAA4Z11gaIbAEB4Y10gAIDwxrpAAACENy5RAgBkqwmiGwAA4S26AQAQ3ohuAIDMeJMd3QAACO/s6AYAQHhjRzcAAMLbjm4AAIS3S5RGSwAAstUE0Q0AQE68s7kEAADhjc0lAADCG5tLAAAQ3jaXAAAgvHGJEgCAbDUR3QAACG/RDQBARk3IukAAAIR31gUCACC8rQu0LhAAQHj7EFgXCACA8HaJEgCAbDVBdAMAILxFNwAAGTXJukAAAIQ3WRcIAIDwti4QAADhbV0gAAAIb5coAQDIVhPRDQCA8BbdohsAgIyaZF0gAADCO+sCAQAQ3lgXCACA8LYuEAAA4e0SJQAAZKuJ6AYAQHiLbgAAMmqSdYEAACC8sy4QAADhbV0gAADcrPC2LhAAAOHtEiUAANlqIroBACAn3tlcAgCA8M7mEgAAhLfNJQAAILxtLgEAQHi7RAkAAN2grSaiGwAA4S26AQAQ3qIbAAAy450d3QAACO/s6AYAgP0Lbzu6AQAQ3nZ0AwDAdoT36pqh7BIlAADZanJ1T6sn4+urhvq31X+LbgAAhPfVfFP9rvqn6rfj+73ilPvr6j+qfxbdAABk1OTK/lD9enz5XnXbJUoAAIR3s5x6/7bp1Psvq3dfEN+n/XE/t0uUAAAI79Y/5/3N+PGfV182zXc75QYAYKf9L6AWD9Xf7nw3AAAAAElFTkSuQmCC" alt="">Farooq Khan</a>
+    <nav class="links" aria-label="Sections">
+      <a href="#work">Work</a><a href="#experience">Experience</a><a href="#clients">Clients</a><a href="#services">Services</a>
+    </nav>
+    <a class="pill" href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" data-shape="logo" aria-label="Introduction">
+    <div class="side l">Farooq</div>
+    <div class="side r">Khan</div>
+    <div class="cue">Scroll<i></i></div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap">
+      <span class="label">Creative Lead · Art Director · Senior Motion Designer</span>
+      <h2>Creative direction and motion for brands and screens.</h2>
+      <p>Over 10 years, I've connected creative direction with detailed visual execution across 3D motion, branding and visual effects, for names like Disney, Coca-Cola, AWS, Unilever and Wondershare Filmora. A project starts with one question: what should the audience understand, feel or remember?</p>
+    </div>
+  </section>
+
+  <section class="block reel-sec" id="showreel" aria-label="Showreel">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="label">Showreel</span><h2>Ten years, two minutes</h2></div></div>
+      <div class="player" id="player"><iframe src="https://www.youtube-nocookie.com/embed/X2Nxu_mbVQs?rel=0&modestbranding=1" title="Farooq Khan showreel" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+          </div>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="label">Portfolio</span><h2>Selected work</h2></div><a class="pill ghost" href="https://www.behance.net/farooqkhanc" target="_blank" rel="noopener">Full archive on Behance ↗</a></div>
+      <div class="grid">
+      <a class="card" href="#work" data-p="onic"><img src="img/onic-night.webp" alt="Onic — Times Square" loading="lazy" width="1400" height="788"><span class="cap"><b>Onic — Times Square</b><span>Onic · Creative direction</span></span></a>
+      <a class="card" href="#work" data-p="disney"><img src="img/disney.webp" alt="Wizards of Warna Walk" loading="lazy" width="1400" height="788"><span class="cap"><b>Wizards of Warna Walk</b><span>Disney · Visual effects</span></span></a>
+      <a class="card" href="#work" data-p="tech"><img src="img/tech-pack.webp" alt="Tech Advertising" loading="lazy" width="1400" height="788"><span class="cap"><b>Tech Advertising</b><span>Wondershare Filmora · Motion pack</span></span></a>
+      <a class="card" href="#work" data-p="dreamy"><img src="img/dreamy-pack.webp" alt="Dreamy Backgrounds" loading="lazy" width="1400" height="788"><span class="cap"><b>Dreamy Backgrounds</b><span>Wondershare Filmora · 3D motion</span></span></a>
+      <a class="card" href="#work" data-p="hero-intro"><img src="img/hero-pack.webp" alt="Luther Henry — Visual Effects" loading="lazy" width="1400" height="788"><span class="cap"><b>Luther Henry — Visual Effects</b><span>Wondershare Filmora · VFX pack</span></span></a>
+      <a class="card" href="#work" data-p="crossfit"><img src="img/crossfit-pack.webp" alt="CrossFit — 3D Pack" loading="lazy" width="1400" height="788"><span class="cap"><b>CrossFit — 3D Pack</b><span>Wondershare Filmora · 3D motion</span></span></a>
+      <a class="card" href="#work" data-p="business"><img src="img/business-pack.webp" alt="3D Business UI" loading="lazy" width="1400" height="788"><span class="cap"><b>3D Business UI</b><span>Wondershare Filmora · 3D motion</span></span></a>
+      <a class="card" href="#work" data-p="aws"><img src="img/aws.webp" alt="AWS Summit ASEAN" loading="lazy" width="1400" height="788"><span class="cap"><b>AWS Summit ASEAN</b><span>Event motion · Opening title</span></span></a>
+      <a class="card" href="#work" data-p="boss"><img src="img/boss.webp" alt="The Scent Intense" loading="lazy" width="1400" height="788"><span class="cap"><b>The Scent Intense</b><span>BOSS · Product visual</span></span></a>
+      <a class="card more" href="#work" data-p="queen"><img src="img/queen.webp" alt="Queen" loading="lazy" width="1400" height="788"><span class="cap"><b>Queen</b><span>Personal artwork · Digital art</span></span></a>
+      <a class="card more" href="#work" data-p="coke"><img src="img/coke.webp" alt="Coca-Cola — Anamorphic" loading="lazy" width="1400" height="788"><span class="cap"><b>Coca-Cola — Anamorphic</b><span>3D anamorphic</span></span></a>
+      <a class="card more" href="#work" data-p="kfc"><img src="img/kfc.webp" alt="KFC — Anamorphic Visuals" loading="lazy" width="1400" height="788"><span class="cap"><b>KFC — Anamorphic Visuals</b><span>3D anamorphic</span></span></a>
+      <a class="card more" href="#work" data-p="pepsi"><img src="img/pepsi.webp" alt="Pepsi — Screen Visual" loading="lazy" width="1400" height="788"><span class="cap"><b>Pepsi — Screen Visual</b><span>Brand design</span></span></a>
+      <a class="card more" href="#work" data-p="sensodyne"><img src="img/sensodyne.webp" alt="Sensodyne — Product Visual" loading="lazy" width="1400" height="788"><span class="cap"><b>Sensodyne — Product Visual</b><span>Brand design</span></span></a>
+      <a class="card more" href="#work" data-p="multiverse"><img src="img/multiverse.webp" alt="Multiverse Journey" loading="lazy" width="1400" height="788"><span class="cap"><b>Multiverse Journey</b><span>Wondershare Filmora · Visual effects</span></span></a>
+      <a class="card more" href="#work" data-p="toon"><img src="img/toon.webp" alt="Toon World" loading="lazy" width="1400" height="788"><span class="cap"><b>Toon World</b><span>Personal artwork</span></span></a>
+      </div>
+      <div class="more-row"><button class="pill ghost" id="more" type="button" aria-expanded="false">Show more work</button></div>
+    </div>
+  </section>
+
+  <section class="frame orbit" data-shape="sphere" aria-hidden="true"><div class="frame-note">Every idea starts in orbit</div></section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="label">Experience</span><h2>Ten years in motion</h2></div></div>
+      <ol class="jobs">
+        <li class="job"><div class="yr">2025 – Present</div><div><h3>Senior Motion Designer <span class="now">Now</span></h3><div class="where">RISSOX · Pakistan</div></div>
+          <ul><li>Led design research and developed creative concepts, style frames and mood boards for marketing and branding projects.</li><li>Produced high-quality 2D and 3D motion graphics for digital campaigns, advertisements and social media.</li><li>Executed advanced compositing, visual effects and match moving for polished, cinematic visuals.</li></ul></li>
+        <li class="job"><div class="yr">2022 – 2024</div><div><h3>Senior Motion Designer</h3><div class="where">Wondershare Technologies (Filmora) · Canada</div></div>
+          <ul><li>Spearheaded design research and crafted style frames for diverse projects and mood boards.</li><li>Delivered sophisticated motion design in both 3D and 2D, with complex compositing and match moving.</li><li>Leveraged AI tools including Midjourney, Runway ML, ChatGPT and Gemini for new solutions.</li></ul></li>
+        <li class="job"><div class="yr">2020 – 2022</div><div><h3>Art Director / Motion Designer</h3><div class="where">Lynx FX · Pakistan</div></div>
+          <ul><li>Led design research and created style frames for projects and mood boards.</li><li>Produced high-quality motion design in 3D and 2D, with advanced compositing and match moving.</li><li>Integrated Unreal Engine into design workflows.</li></ul></li>
+        <li class="job"><div class="yr">2017 – 2020</div><div><h3>Art Director / Motion Graphic Artist</h3><div class="where">Torq Labs · Pakistan</div></div>
+          <ul><li>Conducted design research and developed style frames for various projects and mood boards.</li><li>Specialized in 3D and 2D motion design, compositing and match moving.</li><li>Took part in brainstorming sessions and concept development.</li></ul></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="clients">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="label">Clients</span><h2>Brands I've worked for</h2></div></div>
+      <ul class="clients">
+      <li><img src="logos/disney.png" alt="Disney" loading="lazy"></li>
+      <li><img src="logos/aws.png" alt="AWS" loading="lazy"></li>
+      <li><img src="logos/unilever.png" alt="Unilever" loading="lazy"></li>
+      <li><img src="logos/wondershare-filmora.png" alt="Wondershare Filmora" loading="lazy"></li>
+      <li><img src="logos/burger-king.png" alt="Burger King" loading="lazy"></li>
+      <li><img src="logos/haier.png" alt="Haier" loading="lazy"></li>
+      <li><img src="logos/orient.png" alt="Orient" loading="lazy"></li>
+      <li><img src="logos/coca-cola.png" alt="Coca-Cola" loading="lazy"></li>
+      <li><img src="logos/pepsi.png" alt="Pepsi" loading="lazy"></li>
+      <li><img src="logos/nescafe.png" alt="Nescafé" loading="lazy"></li>
+      <li><img src="logos/monster-energy.png" alt="Monster Energy" loading="lazy"></li>
+      <li><img src="logos/sprite.png" alt="Sprite" loading="lazy"></li>
+      <li><img src="logos/7up.png" alt="7UP" loading="lazy"></li>
+      <li><img src="logos/colgate.png" alt="Colgate" loading="lazy"></li>
+      <li><img src="logos/jubilee-insurance.png" alt="Jubilee Insurance" loading="lazy"></li>
+      <li><img src="logos/habibmetro.png" alt="HabibMetro" loading="lazy"></li>
+      <li><img src="logos/pakistan-cables.png" alt="Pakistan Cables" loading="lazy"></li>
+      <li><img src="logos/boss.png" alt="BOSS" loading="lazy"></li>
+      <li><img src="logos/kfc.png" alt="KFC" loading="lazy"></li>
+      <li><img src="logos/canon.png" alt="Canon" loading="lazy"></li>
+      <li><img src="logos/horlicks.png" alt="Horlicks" loading="lazy"></li>
+      <li><img src="logos/logitech.png" alt="Logitech" loading="lazy"></li>
+      <li><img src="logos/anz.png" alt="ANZ" loading="lazy"></li>
+      <li><img src="logos/isuzu.png" alt="Isuzu" loading="lazy"></li>
+      <li><img src="logos/lotte.png" alt="Lotte" loading="lazy"></li>
+      <li><img src="logos/essilor.png" alt="Essilor" loading="lazy"></li>
+      <li><img src="logos/omoda-jaecoo.png" alt="Omoda Jaecoo" loading="lazy"></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="services">
+    <div class="wrap">
+      <div class="svc-head"><span class="label">Services</span><h2>What I Do</h2><p>From the first idea to the final frame, I create impactful visuals that help brands, products and stories move people.</p></div>
+      <div class="services">
+        <article class="svc"><span class="num">01</span><div class="obj" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><linearGradient id="g0R" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#555"/><stop offset=".7" stop-color="#eee"/><stop offset="1" stop-color="#222"/></linearGradient></defs><ellipse cx="62" cy="60" rx="46" ry="30" transform="rotate(-28 62 60)" fill="none" stroke="url(#g0R)" stroke-width="13"/><ellipse cx="58" cy="62" rx="34" ry="20" transform="rotate(-28 58 62)" fill="none" stroke="url(#g0R)" stroke-width="4" opacity=".7"/></svg></div><h3>3D Motion Design</h3><p>Cinematic 3D animations for products, brands and campaigns.</p><ul class="tags"><li>Cinema 4D</li><li>Redshift</li><li>3D Rendering</li></ul></article>
+        <article class="svc"><span class="num">02</span><div class="obj" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><linearGradient id="g1G" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#3a3a3a"/><stop offset="1" stop-color="#cfcfcf"/></linearGradient></defs><polygon points="60,8 108,44 72,112 18,56" fill="url(#g1G)" opacity=".9"/><polygon points="60,8 72,112 18,56" fill="#fff" opacity=".18"/><polyline points="60,8 54,60 72,112 M54,60 108,44 M54,60 18,56" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.2"/></svg></div><h3>Visual Effects</h3><p>High-end VFX and compositing for commercials, TV and digital.</p><ul class="tags"><li>Compositing</li><li>CG Integration</li><li>Cleanup</li></ul></article>
+        <article class="svc"><span class="num">03</span><div class="obj" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><linearGradient id="g2P" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#777" stop-opacity=".15"/></linearGradient></defs><g fill="url(#g2P)" stroke="#fff" stroke-opacity=".6"><path d="M20 30 L52 18 L52 92 L20 104Z"/><path d="M44 36 L76 24 L76 98 L44 110Z"/><path d="M68 14 L100 2 L100 76 L68 88Z"/></g></svg></div><h3>Branding &amp; Visual Identity</h3><p>Motion-led brand systems, logo animation and visual style.</p><ul class="tags"><li>Brand Systems</li><li>Logo Animation</li><li>Styleframes</li></ul></article>
+        <article class="svc"><span class="num">04</span><div class="obj" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><linearGradient id="g3T" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eee"/><stop offset=".55" stop-color="#2a2a2a"/><stop offset="1" stop-color="#bbb"/></linearGradient></defs><polygon points="70,6 112,112 34,90" fill="url(#g3T)"/><polygon points="70,6 34,90 50,96" fill="#fff" opacity=".22"/><line x1="70" y1="6" x2="88" y2="104" stroke="#fff" stroke-opacity=".5"/></svg></div><h3>Creative Direction</h3><p>Concept development, art direction and end-to-end creative guidance.</p><ul class="tags"><li>Concept</li><li>Storyboards</li><li>Art Direction</li></ul></article>
+        <article class="svc"><span class="num">05</span><div class="obj" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><linearGradient id="g4P" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#777" stop-opacity=".15"/></linearGradient></defs><g fill="url(#g4P)" stroke="#fff" stroke-opacity=".6"><path d="M20 30 L52 18 L52 92 L20 104Z"/><path d="M44 36 L76 24 L76 98 L44 110Z"/><path d="M68 14 L100 2 L100 76 L68 88Z"/></g></svg></div><h3>Explainer &amp; Product Videos</h3><p>Clear and engaging animations for SaaS, tech products and services.</p><ul class="tags"><li>Explainers</li><li>UI Animation</li><li>SaaS Videos</li></ul></article>
+        <article class="svc"><span class="num">06</span><div class="obj" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><linearGradient id="g5R" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#555"/><stop offset=".7" stop-color="#eee"/><stop offset="1" stop-color="#222"/></linearGradient></defs><ellipse cx="62" cy="60" rx="46" ry="30" transform="rotate(-28 62 60)" fill="none" stroke="url(#g5R)" stroke-width="13"/><ellipse cx="58" cy="62" rx="34" ry="20" transform="rotate(-28 58 62)" fill="none" stroke="url(#g5R)" stroke-width="4" opacity=".7"/></svg></div><h3>Post-Production</h3><p>Editing, motion graphics and final polish for a seamless output.</p><ul class="tags"><li>Editing</li><li>Motion Graphics</li><li>Color Grading</li></ul></article>
+      </div>
+      <div class="svc-cta"><a class="pill" href="#contact">Let's Work Together ↗</a></div>
+    </div>
+  </section>
+
+  <section class="frame word" data-shape="design" aria-hidden="true"></section>
+
+  <section class="end" id="contact">
+    <div class="wrap">
+      <h2>Farooq Khan</h2>
+      <p class="quote">Make it move. Make it matter.</p>
+      <dl class="details">
+        <div><dt>Email</dt><dd><a href="mailto:farooqkhanc@gmail.com">farooqkhanc@gmail.com</a></dd></div>
+        <div><dt>WhatsApp</dt><dd><a href="https://wa.me/923112163944" target="_blank" rel="noopener">+92 311 2163944</a></dd></div>
+        <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/farooqkhanc" target="_blank" rel="noopener">linkedin.com/in/farooqkhanc</a></dd></div>
+        <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/farooqkhanc" target="_blank" rel="noopener">@farooqkhanc</a></dd></div>
+        <div><dt>Behance</dt><dd><a href="https://www.behance.net/farooqkhanc" target="_blank" rel="noopener">behance.net/farooqkhanc</a></dd></div>
+        <div><dt>Based in</dt><dd>Islamabad, Pakistan · open to relocate</dd></div>
+        <div><dt>Availability</dt><dd>Full time / Freelance</dd></div>
+      </dl>
+      <div class="foot"><span>© 2026 Farooq Khan</span><span>Creative Lead · Art Director · Senior Motion Designer</span></div>
+    </div>
+  </section>
+</main>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="v-title">
+  <div class="sheet">
+    <button class="x" id="v-close" aria-label="Close project">×</button>
+    <div class="media" id="v-media"></div>
+    <button class="navp p" id="v-prev" aria-label="Previous project">‹</button><button class="navp n" id="v-next" aria-label="Next project">›</button>
+    <div class="body"><div><span class="meta" id="v-meta"></span><h3 id="v-title"></h3><p class="sum" id="v-sum"></p></div>
+      <div class="col"><h4>Challenge</h4><p id="v-ch"></p><h4>Approach</h4><p id="v-ap"></p></div></div>
+    <div class="thumbs" id="v-thumbs"></div>
+  </div>
+</div>
+
+<script>
+const PROJ = {"onic": {"title": "Onic — Times Square", "brand": "Onic", "style": "Motion", "summary": "A dimensional brand moment in the energy and scale of New York’s Times Square.", "challenge": "Make a brand message read clearly within a visually competitive, large-format environment.", "approach": "Bring perspective, composition and paced motion together around a single unmistakable focal point. The supplied film shows the piece in its screen setting.", "gallery": ["onic-night", "onic"], "video": "vid/1yh66cYhDDI7mTs8GapLgOeWLNbdJeyzW.mp4", "cat": "Creative direction"}, "disney": {"title": "Wizards of Warna Walk", "brand": "Disney", "style": "Motion", "summary": "A playful promotional world for Disney’s Wizards of Warna Walk.", "challenge": "Build anticipation through a distinctive visual atmosphere while keeping the entertainment message clear.", "approach": "Connect magical visual details, composition and animated reveals into one compact teaser. Selected original stills and the supplied video document the treatment.", "gallery": ["disney", "disney-magic", "disney-frame"], "video": "vid/1BWor9UoJ097dOgBKdcr1N-A6zpUDtW9A.mp4", "cat": "Visual effects"}, "business": {"title": "3D Business UI", "brand": "Wondershare Filmora", "style": "Motion", "summary": "A family of dimensional business and interface graphics for visual storytelling.", "challenge": "Balance expressive 3D character with legibility and practical use inside a creator’s editing workflow.", "approach": "Use a consistent visual vocabulary, clear symbols and considered animation to turn individual elements into a coherent motion collection.", "gallery": ["business", "business-pack", "tech-pack"], "video": "vid/1XEzX4ZVprch9Rdnwo5Z4qamufwpLcZ3X.mp4", "cat": "3D motion design"}, "dreamy": {"title": "Dreamy Backgrounds", "brand": "Wondershare Filmora", "style": "Motion", "summary": "Atmospheric moving backgrounds that give a creator’s story a visual world.", "challenge": "Give the central subject a clear visual presence while building a distinctive and coherent world around it.", "approach": "Connect composition, colour, depth and visual rhythm. These original portfolio frames show the work as supplied, with the central idea carried through the image-making.", "gallery": ["dreamy", "dreamy-pack"], "video": "vid/1uEPSgSzyKtxoxz0vUZ1DM6CwQFS08kPo.mp4", "cat": "3D motion design"}, "hero-intro": {"title": "Hero Intro", "brand": "Wondershare Filmora", "style": "Motion", "summary": "A graphic motion collection built around strong introductions and animated storytelling.", "challenge": "Give the central subject a clear visual presence while building a distinctive and coherent world around it.", "approach": "Connect composition, colour, depth and visual rhythm. These original portfolio frames show the work as supplied, with the central idea carried through the image-making.", "gallery": ["hero-intro", "hero-pack"], "video": "vid/13BKNQQbBaGf_Qv5eVFETrym3hvcNl3KJ.mp4", "cat": "3D motion design"}, "crossfit": {"title": "CrossFit — 3D Pack", "brand": "Wondershare Filmora", "style": "Motion", "summary": "Fitness-led 3D visuals with energy, rhythm and a cohesive graphic language.", "challenge": "Give the central subject a clear visual presence while building a distinctive and coherent world around it.", "approach": "Connect composition, colour, depth and visual rhythm. These original portfolio frames show the work as supplied, with the central idea carried through the image-making.", "gallery": ["crossfit", "crossfit-pack"], "video": "vid/1-8VYfTbjfRqQfrL37d8o2NZxMrbg17P_.mp4", "cat": "3D motion design"}, "aws": {"title": "AWS Summit — Motion Frames", "brand": "Portfolio archive", "style": "Motion frames", "summary": "Selected event-motion frames exploring hierarchy, composition and scale.", "challenge": "Give the central subject a clear visual presence while building a distinctive and coherent world around it.", "approach": "Connect composition, colour, depth and visual rhythm. These original portfolio frames show the work as supplied, with the central idea carried through the image-making.", "gallery": ["aws", "aws-frame"], "video": null, "cat": "Creative direction"}, "boss": {"title": "Boss", "brand": "Personal artwork", "style": "Digital art", "summary": "A self-directed visual study built around character and atmosphere.", "challenge": "Give the central subject a clear visual presence while building a distinctive and coherent world around it.", "approach": "Connect composition, colour, depth and visual rhythm. These original portfolio frames show the work as supplied, with the central idea carried through the image-making.", "gallery": ["boss"], "video": null, "cat": "Brand design"}, "queen": {"title": "Queen", "brand": "Personal artwork", "style": "Digital art", "summary": "A character-led study in colour, attitude and dimensional form.", "challenge": "Give the central subject a clear visual presence while building a distinctive and coherent world around it.", "approach": "Connect composition, colour, depth and visual rhythm. These original portfolio frames show the work as supplied, with the central idea carried through the image-making.", "gallery": ["queen"], "video": null, "cat": "Brand design"}, "coke": {"title": "Coca-Cola — Anamorphic", "brand": "Portfolio project", "style": "Motion", "summary": "A product-led exploration of depth, scale and large-format screen composition.", "challenge": "Give the central subject a clear visual presence while building a distinctive and coherent world around it.", "approach": "Connect composition, colour, depth and visual rhythm. These original portfolio frames show the work as supplied, with the central idea carried through the image-making.", "gallery": ["coke"], "video": "vid/1Qp4XzCcr0zv1e-DPvIDJ41iLevhQtoUq.mp4", "cat": "3D motion design"}, "kfc": {"title": "KFC — Anamorphic Visuals", "brand": "Portfolio project", "style": "3D", "summary": "A series of bold dimensional compositions from the original portfolio archive.", "challenge": "Give the central subject a clear visual presence while building a distinctive and coherent world around it.", "approach": "Connect composition, colour, depth and visual rhythm. These original portfolio frames show the work as supplied, with the central idea carried through the image-making.", "gallery": ["kfc", "kfc-2", "kfc-3"], "video": null, "cat": "Brand design"}, "pepsi": {"title": "Pepsi — Screen Visual", "brand": "Portfolio project", "style": "3D", "summary": "An original product-led screen composition from the supplied portfolio.", "challenge": "Give the central subject a clear visual presence while building a distinctive and coherent world around it.", "approach": "Connect composition, colour, depth and visual rhythm. These original portfolio frames show the work as supplied, with the central idea carried through the image-making.", "gallery": ["pepsi"], "video": null, "cat": "Brand design"}, "sensodyne": {"title": "Sensodyne — Product Visual", "brand": "Portfolio project", "style": "3D", "summary": "A dimensional approach to product presentation and brand recognition.", "challenge": "Give the central subject a clear visual presence while building a distinctive and coherent world around it.", "approach": "Connect composition, colour, depth and visual rhythm. These original portfolio frames show the work as supplied, with the central idea carried through the image-making.", "gallery": ["sensodyne"], "video": null, "cat": "Brand design"}, "multiverse": {"title": "Multiverse Journey", "brand": "Wondershare Filmora", "style": "Motion", "summary": "An exploration of visual worlds, transitions and dimensional motion.", "challenge": "Give the central subject a clear visual presence while building a distinctive and coherent world around it.", "approach": "Connect composition, colour, depth and visual rhythm. These original portfolio frames show the work as supplied, with the central idea carried through the image-making.", "gallery": ["multiverse"], "video": "vid/1_wNFhnOg6HYo3Oo4GIQOBpzYAHoFnEif.mp4", "cat": "Visual effects"}, "toon": {"title": "Toon World", "brand": "Personal artwork", "style": "3D", "summary": "An original stylised world exploring colour, scale and character.", "challenge": "Give the central subject a clear visual presence while building a distinctive and coherent world around it.", "approach": "Connect composition, colour, depth and visual rhythm. These original portfolio frames show the work as supplied, with the central idea carried through the image-making.", "gallery": ["toon"], "video": null, "cat": "Visual effects"}, "tech": {"title": "Tech Advertising", "brand": "Wondershare Filmora", "style": "Motion", "cat": "Motion pack", "summary": "A tech-led advertising motion pack for creators.", "challenge": "", "approach": "", "gallery": ["tech-pack"], "video": null}};
+(function(){
+  const v=document.getElementById('viewer'),media=document.getElementById('v-media'),th=document.getElementById('v-thumbs');
+  let order=[],cur=-1,lastFocus=null;
+  const esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function show(item){
+    media.innerHTML=item.type==='v'?`<video src="${item.src}" controls autoplay muted loop playsinline></video>`:`<img src="${item.src}" alt="">`;
+    [...th.children].forEach(b=>b.classList.toggle('on',b.dataset.src===item.src));
+  }
+  function open(id){
+    const p=PROJ[id]; if(!p) return;
+    cur=order.indexOf(id);
+    document.getElementById('v-title').textContent=p.title;
+    document.getElementById('v-meta').textContent=[p.brand,p.cat].filter(Boolean).join(' · ');
+    document.getElementById('v-sum').textContent=p.summary||'';
+    document.getElementById('v-ch').textContent=p.challenge||'';
+    document.getElementById('v-ap').textContent=p.approach||'';
+    document.querySelector('.sheet .col').hidden=!(p.challenge||p.approach);
+    const items=[...(p.video?[{type:'v',src:p.video}]:[]),...p.gallery.map(g=>({type:'i',src:'img/'+g+'.webp'}))];
+    th.innerHTML=items.length>1?items.map(it=>it.type==='v'?`<button class="vid" data-src="${it.src}" aria-label="Play video">▶ Video</button>`:`<button data-src="${it.src}" aria-label="View image"><img src="${it.src}" alt=""></button>`).join(''):'';
+    [...th.children].forEach((b,i)=>b.onclick=()=>show(items[i]));
+    show(items[0]);
+    if(v.hidden){lastFocus=document.activeElement;v.hidden=false;document.body.style.overflow='hidden';requestAnimationFrame(()=>v.classList.add('on'));document.getElementById('v-close').focus();}
+    v.scrollTop=0;
+  }
+  function close(){v.classList.remove('on');media.innerHTML='';setTimeout(()=>{v.hidden=true},300);document.body.style.overflow='';lastFocus&&lastFocus.focus();}
+  document.querySelectorAll('.card[data-p]').forEach(c=>{if(!order.includes(c.dataset.p))order.push(c.dataset.p);c.addEventListener('click',e=>{e.preventDefault();open(c.dataset.p)})});
+  document.getElementById('v-close').onclick=close;
+  document.getElementById('v-prev').onclick=()=>open(order[(cur-1+order.length)%order.length]);
+  document.getElementById('v-next').onclick=()=>open(order[(cur+1)%order.length]);
+  v.addEventListener('click',e=>{if(e.target===v)close()});
+  addEventListener('keydown',e=>{if(v.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowRight')document.getElementById('v-next').click();if(e.key==='ArrowLeft')document.getElementById('v-prev').click()});
+})();
+document.getElementById('more').addEventListener('click',e=>{const g=document.querySelector('#work .grid');const o=g.classList.toggle('open');e.currentTarget.textContent=o?'Show less':'Show more work';e.currentTarget.setAttribute('aria-expanded',o)});
+(function(){const c=document.querySelector('.cue');const f=()=>{const end=document.documentElement.scrollHeight-innerHeight;c.style.opacity=(end-scrollY<innerHeight*0.6)?0:1};addEventListener('scroll',f,{passive:true});f()})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const LOGO_MASK = 'data:image/png;base64,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';
+(async function(){
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const canvas = document.getElementById('sky');
+const small = Math.min(innerWidth, innerHeight) < 700;
+const N = small ? 6500 : 12000;            // particles that build the shapes
+const NB = small ? 700 : 1400;             // distant still stars
+const KEEP = 0.2;                          // share of particles still visible while they float
+
+const renderer = new THREE.WebGLRenderer({canvas, antialias:false, alpha:true, powerPreference:'high-performance'});
+const DPR = Math.min(devicePixelRatio || 1, 2);
+renderer.setPixelRatio(DPR);
+const scene = new THREE.Scene();
+const FOV = 50, CAMZ = 700;
+const camera = new THREE.PerspectiveCamera(FOV, 1, 1, 4000);
+camera.position.set(0, 0, CAMZ);
+const TAN = Math.tan(FOV * Math.PI / 360);
+let W = 1, H = 1, halfW = 1, halfH = 1;
+
+function makeMaterial(scale){
+  return new THREE.ShaderMaterial({
+    transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+    uniforms:{uTime:{value:0}, uScale:{value:scale}, uPR:{value:DPR}},
+    vertexShader:`
+      attribute float aSize; attribute vec3 aColor; attribute vec3 aShape; attribute float aBright; attribute float aTw; attribute float aKeep; attribute float aW;
+      uniform float uTime,uScale,uPR;
+      varying vec3 vColor; varying float vBright; varying float vAlpha;
+      void main(){
+        vec4 mv = modelViewMatrix * vec4(position,1.0);
+        float tw = 0.72 + 0.28 * sin(uTime * (0.5 + aTw * 1.8) + aTw * 37.0);
+        float vis = max(aKeep, aW);
+        float s = aSize * (1.0 + aBright * 6.0) * (0.85 + aW * 0.3);
+        gl_PointSize = max(1.0, s * uPR * uScale / -mv.z);
+        vColor = mix(aColor, aShape, aW);
+        vBright = aBright;
+        vAlpha = tw * vis * mix(0.75, 1.15, aW);
+        gl_Position = projectionMatrix * mv;
+      }`,
+    fragmentShader:`
+      varying vec3 vColor; varying float vBright; varying float vAlpha;
+      void main(){
+        if (vAlpha < 0.01) discard;
+        vec2 uv = gl_PointCoord * 2.0 - 1.0;
+        float r2 = dot(uv,uv);
+        float k = mix(10.0, 110.0, vBright);
+        float a = exp(-r2 * k) * 1.3 + exp(-r2 * k * 0.18) * 0.22;
+        float rays = exp(-abs(uv.y) * 46.0) * (1.0 - abs(uv.x)) + exp(-abs(uv.x) * 46.0) * (1.0 - abs(uv.y));
+        a += vBright * rays * 0.8;
+        a *= vAlpha;
+        if (a < 0.004) discard;
+        gl_FragColor = vec4(vColor * a, a);
+      }`
+  });
+}
+function rand(a,b){return a + Math.random()*(b-a)}
+const ease = x => x<=0 ? 0 : x>=1 ? 1 : x*x*(3-2*x);
+const easeIO = x => x<=0 ? 0 : x>=1 ? 1 : (x<.5 ? 4*x*x*x : 1-Math.pow(-2*x+2,3)/2);
+
+/* floating stars: soft white. formed stars: the galaxy palette (white, ice blue, cyan, warm orange) */
+function floatColor(){ const r = Math.random(); return r < 0.15 ? [0.75,0.84,1.0] : r < 0.22 ? [1.0,0.85,0.7] : [0.93,0.94,0.98]; }
+function shapeColor(){
+  const r = Math.random();
+  if (r < 0.38) return [1.0, 1.0, 1.0];
+  if (r < 0.62) return [0.62, 0.84, 1.0];   // ice blue
+  if (r < 0.78) return [0.42, 0.78, 1.0];   // cyan
+  if (r < 0.93) return [1.0, 0.62, 0.38];   // warm orange
+  return [1.0, 0.82, 0.62];                 // gold
+}
+
+const pos = new Float32Array(N*3), floatBase = new Float32Array(N*3), phase = new Float32Array(N*4), off = new Float32Array(N*2);
+const sizes = new Float32Array(N), colors = new Float32Array(N*3), shapeCols = new Float32Array(N*3), bright = new Float32Array(N), tw = new Float32Array(N), keep = new Float32Array(N), wArr = new Float32Array(N), delay = new Float32Array(N);
+for (let i=0;i<N;i++){
+  sizes[i] = 1.3 + Math.pow(Math.random(), 2.4) * 6.2;
+  colors.set(floatColor(), i*3); shapeCols.set(shapeColor(), i*3);
+  bright[i] = Math.random() < (small ? 0.006 : 0.004) ? 1 : 0;
+  tw[i] = Math.random(); delay[i] = Math.random();
+  keep[i] = Math.random() < KEEP ? 1 : 0;
+  for (let k=0;k<4;k++) phase[i*4+k] = Math.random()*Math.PI*2;
+}
+const geo = new THREE.BufferGeometry();
+const attr = (n, a, s) => geo.setAttribute(n, new THREE.BufferAttribute(a, s));
+attr('position', pos, 3); attr('aSize', sizes, 1); attr('aColor', colors, 3); attr('aShape', shapeCols, 3);
+attr('aBright', bright, 1); attr('aTw', tw, 1); attr('aKeep', keep, 1); attr('aW', wArr, 1);
+const mat = makeMaterial(900);
+const points = new THREE.Points(geo, mat); points.frustumCulled = false; scene.add(points);
+
+const bpos = new Float32Array(NB*3), bsz = new Float32Array(NB), bcol = new Float32Array(NB*3), bsh = new Float32Array(NB*3), bbr = new Float32Array(NB), btw = new Float32Array(NB), bk = new Float32Array(NB).fill(1), bw = new Float32Array(NB);
+for (let i=0;i<NB;i++){ bsz[i] = 0.8 + Math.pow(Math.random(),3)*2.2; const c = floatColor(); bcol.set([c[0]*.5,c[1]*.5,c[2]*.5], i*3); bbr[i] = Math.random() < 0.003 ? 1 : 0; btw[i] = Math.random(); }
+const bgeo = new THREE.BufferGeometry();
+[['position',bpos,3],['aSize',bsz,1],['aColor',bcol,3],['aShape',bsh,3],['aBright',bbr,1],['aTw',btw,1],['aKeep',bk,1],['aW',bw,1]].forEach(([n,a,s]) => bgeo.setAttribute(n, new THREE.BufferAttribute(a,s)));
+const bmat = makeMaterial(1500);
+const bpoints = new THREE.Points(bgeo, bmat); bpoints.frustumCulled = false; scene.add(bpoints);
+
+/* shapes: point sets plus a mask, so particles can wander inside the shape without leaving it */
+const targets = {logo:null, sphere:null, design:null};
+const masks = {};
+const rotSphere = new Float32Array(N*3);
+const logoImg = new Image(); logoImg.src = LOGO_MASK;
+
+function fromPixels(c, cw, ch, maxW, maxH, depth, key){
+  const d = c.getContext('2d').getImageData(0,0,cw,ch).data, pts = [];
+  let minX=1e9,maxX=-1e9,minY=1e9,maxY=-1e9;
+  const inside = new Uint8Array(cw*ch);
+  for (let y=0;y<ch;y++) for (let x=0;x<cw;x++){ if (d[(y*cw+x)*4+3] > 140){ inside[y*cw+x] = 1; if ((x|y)%2===0) pts.push(x,y); if(x<minX)minX=x; if(x>maxX)maxX=x; if(y<minY)minY=y; if(y>maxY)maxY=y; } }
+  const s = Math.min(maxW/(maxX-minX), maxH/(maxY-minY)), cx=(minX+maxX)/2, cy=(minY+maxY)/2;
+  masks[key] = {inside, cw, ch, s, cx, cy, test(wx, wy){ const px = Math.round(wx/s + cx), py = Math.round(-wy/s + cy); return px>=0 && py>=0 && px<cw && py<ch && inside[py*cw+px] === 1; }};
+  const out = new Float32Array(N*3), n = pts.length/2;
+  for (let i=0;i<N;i++){
+    const j = (Math.random()*n|0)*2;
+    out[i*3] = (pts[j]-cx+rand(-1,1))*s; out[i*3+1] = -(pts[j+1]-cy+rand(-1,1))*s; out[i*3+2] = rand(-depth,depth);
+  }
+  return out;
+}
+function sampleImage(img, maxW, maxH, depth, key){
+  const c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight;
+  c.getContext('2d').drawImage(img,0,0);
+  return fromPixels(c, c.width, c.height, maxW, maxH, depth, key);
+}
+function sampleText(text, maxW, maxH, depth, key){
+  const cw = 1600, ch = 600, c = document.createElement('canvas'); c.width = cw; c.height = ch;
+  const x = c.getContext('2d');
+  let fs = 420; x.font = `700 ${fs}px "Mona Sans", Arial, sans-serif`;
+  if ('letterSpacing' in x) x.letterSpacing = `${-fs*0.05}px`;
+  fs = Math.min(fs, fs*(cw*0.9)/x.measureText(text).width);
+  x.font = `700 ${fs}px "Mona Sans", Arial, sans-serif`;
+  if ('letterSpacing' in x) x.letterSpacing = `${-fs*0.05}px`;
+  x.fillStyle = '#fff'; x.textAlign = 'center'; x.textBaseline = 'middle';
+  x.fillText(text, cw/2, ch/2);
+  return fromPixels(c, cw, ch, maxW, maxH, depth, key);
+}
+function sampleLines(lines, maxW, maxH, depth, key){
+  const cw = 1600, ch = 1500, c = document.createElement('canvas'); c.width = cw; c.height = ch;
+  const x = c.getContext('2d'); x.fillStyle = '#fff'; x.textAlign = 'center'; x.textBaseline = 'alphabetic';
+  const base = 400; let y = 60;
+  for (const [txt, s] of lines){
+    const fs = base*s; x.font = `700 ${fs}px "Mona Sans", Arial, sans-serif`;
+    if ('letterSpacing' in x) x.letterSpacing = `${-fs*0.05}px`;
+    y += fs*0.82; x.fillText(txt, cw/2, y); y += fs*0.16;
+  }
+  return fromPixels(c, cw, ch, maxW, maxH, depth, key);
+}
+function buildSphere(R){
+  const out = new Float32Array(N*3), ga = Math.PI*(3-Math.sqrt(5)), nSurf = Math.floor(N*0.8);
+  for (let i=0;i<nSurf;i++){
+    const y = 1-(i/(nSurf-1))*2, r = Math.sqrt(1-y*y), th = ga*i;
+    const rr = R*(Math.random()<0.86 ? rand(0.985,1.015) : rand(0.5,0.97));
+    out[i*3] = Math.cos(th)*r*rr; out[i*3+1] = y*rr; out[i*3+2] = Math.sin(th)*r*rr;
+  }
+  for (let i=nSurf;i<N;i++){ const a = Math.random()*Math.PI*2, rr = R*rand(1.45,1.8); out[i*3]=Math.cos(a)*rr; out[i*3+1]=rand(-1.5,1.5); out[i*3+2]=Math.sin(a)*rr; }
+  return out;
+}
+let fieldH = 1;
+function buildFloat(){
+  fieldH = TAN*CAMZ*2.4;
+  for (let i=0;i<N;i++){
+    const z = rand(-500,240), hw = TAN*(CAMZ-z)*(W/H), hh = TAN*(CAMZ-z);
+    floatBase[i*3] = rand(-hw*1.05,hw*1.05); floatBase[i*3+1] = rand(-hh*1.2,hh*1.2); floatBase[i*3+2] = z;
+  }
+  for (let i=0;i<NB;i++){ const z = rand(-1400,-700), hw = TAN*(CAMZ-z)*(W/H)*1.1, hh = TAN*(CAMZ-z)*1.1; bpos[i*3]=rand(-hw,hw); bpos[i*3+1]=rand(-hh,hh); bpos[i*3+2]=z; }
+  bgeo.attributes.position.needsUpdate = true;
+}
+function buildTargets(){
+  const fitW = halfW*2, fitH = halfH*2, narrow = W < 700;
+  targets.logo = sampleImage(logoImg, fitW*(narrow?0.62:0.34), fitH*(narrow?0.34:0.48), 14, 'logo');
+  targets.sphere = buildSphere(Math.min(halfH*(narrow?0.3:0.36), halfW*(narrow?0.36:0.26)));
+  targets.design = sampleLines([['Design',1],['in',0.42],['Motion',1.25]], fitW*(narrow?0.86:0.6), fitH*(narrow?0.42:0.66), 10, 'design');
+}
+function resize(){
+  W = innerWidth; H = innerHeight;
+  renderer.setSize(W, H, false);
+  camera.aspect = W/H; camera.updateProjectionMatrix();
+  halfH = TAN*CAMZ; halfW = halfH*camera.aspect;
+  mat.uniforms.uScale.value = H*0.9; bmat.uniforms.uScale.value = H*1.4;
+  buildFloat(); buildTargets();
+}
+try{ await Promise.race([Promise.all([logoImg.decode(), document.fonts.load('700 200px "Mona Sans"')]), new Promise(r=>setTimeout(r,1800))]); }catch(e){}
+if (!logoImg.complete) await new Promise(r => { logoImg.onload = r; setTimeout(r,1500); });
+resize();
+for (let i=0;i<N*3;i++) pos[i] = floatBase[i];
+let rT, lastW = innerWidth;
+addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(() => {
+  if (Math.abs(innerWidth-lastW) > 40 || !small){ lastW = innerWidth; resize(); }
+  else { W=innerWidth; H=innerHeight; renderer.setSize(W,H,false); camera.aspect=W/H; camera.updateProjectionMatrix(); halfW=halfH*camera.aspect; }
+}, 180); });
+
+/* scroll: each empty frame owns a shape and holds it while the frame fills the screen */
+const frames = [...document.querySelectorAll('[data-shape]')].map(el => ({el, shape:el.dataset.shape}));
+function scrollState(){
+  const vh = innerHeight; let best = {shape:null, m:0, dy:0};
+  for (const f of frames){
+    const r = f.el.getBoundingClientRect();
+    const c = (r.top + r.height/2 - vh/2)/vh;
+    const plateau = Math.max(0, (r.height - vh)/(2*vh));
+    const m = 1 - ease((Math.abs(c) - plateau)/0.7);
+    if (m > best.m){ const over = Math.sign(c)*Math.max(0, Math.abs(c)-plateau); best = {shape:f.shape, m, dy: -over*vh*(2*halfH/vh)}; }
+  }
+  return best;
+}
+
+const mouse = {nx:9, ny:9, active:false};
+addEventListener('pointermove', e => { mouse.nx = (e.clientX/innerWidth)*2-1; mouse.ny = -((e.clientY/innerHeight)*2-1); mouse.active = true; }, {passive:true});
+document.addEventListener('pointerleave', () => { mouse.active = false; });
+
+/* smoothed state: everything eases, nothing springs */
+const start = performance.now();
+let last = start, camX = 0, camY = 0, M = 0, DY = 0, shape = null, scrollS = scrollY;
+function frame(now){
+  const dt = Math.min(0.05, (now-last)/1000); last = now;
+  const ts = now/1000, since = (now - start)/1000;
+  mat.uniforms.uTime.value = ts; bmat.uniforms.uTime.value = ts;
+
+  // page scroll, smoothed, drives the drift of the floating stars
+  scrollS += (scrollY - scrollS) * (1 - Math.exp(-dt*4));
+
+  // the logo assembles after load, then follows the scroll
+  const st = scrollState();
+  let goal = st.m;
+  if (st.shape === 'logo') goal = Math.min(goal, easeIO((since - 0.9)/3.2));
+  if (st.shape !== shape && M < 0.04){ shape = st.shape; }
+  if (st.shape !== shape) goal = 0;                         // fully release one shape before the next one forms
+  M += (goal - M) * (1 - Math.exp(-dt*(goal > M ? 1.1 : 1.6)));
+  DY += (st.dy - DY) * (1 - Math.exp(-dt*5));
+
+  let src = shape ? targets[shape] : null;
+  if (shape === 'sphere'){
+    const ang = ts*(reduce ? 0.015 : 0.035), tilt = 0.36, ca = Math.cos(ang), sa = Math.sin(ang), ct = Math.cos(tilt), sn = Math.sin(tilt), sp = targets.sphere;
+    for (let i=0;i<N;i++){ const x=sp[i*3], y=sp[i*3+1], z=sp[i*3+2], x1=x*ca+z*sa, z1=-x*sa+z*ca; rotSphere[i*3]=x1; rotSphere[i*3+1]=y*ct-z1*sn; rotSphere[i*3+2]=y*sn+z1*ct; }
+    src = rotSphere;
+  }
+  const mask = shape && masks[shape];
+
+  const mwx = mouse.nx*halfW, mwy = mouse.ny*halfH;
+  const A = reduce ? 6 : 16;
+  const scrollWorld = scrollS * (2*halfH/innerHeight) * 0.22;   // stars rise slowly with the content
+  const kFloat = 1 - Math.exp(-dt*0.9), kShape = 1 - Math.exp(-dt*1.7), kOff = Math.exp(-dt*0.9);
+  const flowA = reduce ? 3 : 9;
+
+  for (let i=0;i<N;i++){
+    const i3 = i*3, p4 = i*4;
+    const z0 = floatBase[i3+2], depthF = CAMZ/(CAMZ - z0);
+    let fy = floatBase[i3+1] + scrollWorld*depthF + Math.cos(ts*0.06 + phase[p4+1])*A;
+    const span = fieldH*(CAMZ - z0)/CAMZ;
+    fy = ((fy + span/2) % span + span) % span - span/2;
+    let tx = floatBase[i3] + Math.sin(ts*0.07 + phase[p4])*A + Math.sin(ts*0.19 + phase[p4+2])*A*0.25;
+    let ty = fy;
+    let tz = z0 + Math.sin(ts*0.05 + phase[p4+2])*A;
+
+    // staggered formation weight
+    let w = 0;
+    if (src){
+      w = ease((M*1.6 - delay[i]*0.6));
+      if (w > 0){
+        let sx = src[i3], sy = src[i3+1];
+        // slow wander inside the shape: stars drift along and shimmer at the edges
+        if (mask){
+          const ox = Math.sin(ts*0.21 + phase[p4+3])*flowA + Math.sin(ts*0.09 + phase[p4])*flowA*0.6;
+          const oy = Math.cos(ts*0.17 + phase[p4+2])*flowA*0.7;
+          if (mask.test(sx+ox, sy+oy)){ sx += ox; sy += oy; }
+        } else {
+          sx += Math.sin(ts*0.3 + phase[p4])*2; sy += Math.cos(ts*0.26 + phase[p4+1])*2;
+        }
+        sy += DY;
+        tx += (sx-tx)*w; ty += (sy-ty)*w; tz += (src[i3+2]-tz)*w;
+      }
+    }
+    wArr[i] += (w - wArr[i]) * (1 - Math.exp(-dt*2.2));
+
+    // soft cursor nudge that fades away on its own
+    if (mouse.active){
+      const sc = (CAMZ-pos[i3+2])/CAMZ, dx = pos[i3] - mwx*sc, dy = pos[i3+1] - mwy*sc, R = 120*sc, d2 = dx*dx+dy*dy;
+      if (d2 < R*R){
+        const d = Math.sqrt(d2)+0.001, fall = (1-d/R)*(1-d/R);
+        if (w < 0.5){ const f = fall*(1-w)*60*dt; off[i*2] += dx/d*f*8; off[i*2+1] += dy/d*f*8; }
+        else if (delay[i] < 0.28){ const a = phase[p4+3], f = fall*60*dt*5; off[i*2] += (Math.cos(a)*0.8 + dx/d*0.2)*f; off[i*2+1] += (Math.sin(a)*0.8 + dy/d*0.2)*f; }
+      }
+    }
+    off[i*2] *= kOff; off[i*2+1] *= kOff;
+    { const L = Math.hypot(off[i*2],off[i*2+1]), cap = 26 + (1-w)*30; if (L > cap){ off[i*2] *= cap/L; off[i*2+1] *= cap/L; } }
+    tx += off[i*2]; ty += off[i*2+1];
+
+    // ease toward the target; when a floating star wraps off-screen, move it straight there
+    const k = kFloat + (kShape - kFloat)*w;
+    if (w < 0.02 && Math.abs(ty - pos[i3+1]) > span*0.5){ pos[i3+1] = ty; }
+    pos[i3] += (tx - pos[i3])*k; pos[i3+1] += (ty - pos[i3+1])*k; pos[i3+2] += (tz - pos[i3+2])*k;
+  }
+  geo.attributes.position.needsUpdate = true;
+  geo.attributes.aW.needsUpdate = true;
+
+  const gx = mouse.active ? mouse.nx*10 : 0, gy = mouse.active ? mouse.ny*6 : 0;
+  camX += (gx-camX)*(1-Math.exp(-dt*1.5)); camY += (gy-camY)*(1-Math.exp(-dt*1.5));
+  camera.position.x = camX; camera.position.y = camY; camera.lookAt(0,0,0);
+  renderer.render(scene, camera);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+})();
+
+</script>
