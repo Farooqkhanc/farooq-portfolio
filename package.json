@@ -1,0 +1,1 @@
+{"name":"farooq-portfolio","private":true,"version":"1.0.0","scripts":{"build":"node scripts/build.mjs"},"dependencies":{"@ffmpeg-installer/linux-x64":"4.1.0","sharp":"0.34.3"},"engines":{"node":">=22"}}
