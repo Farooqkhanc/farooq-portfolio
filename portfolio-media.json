@@ -177,8 +177,14 @@
     "name": "Credence Partners",
     "files": [
       {
+        "id": "1vVImDcQAWRkxF89ZqS855b9aqL6XBMZ7",
+        "title": "tumgbnail.png",
+        "mime_type": "image/png",
+        "size": "991226"
+      },
+      {
         "id": "109_kxjLlg9Eatn5q6mgNIkAjuaVU2xor",
-        "title": "Thumbnail.jpg",
+        "title": "02.jpg",
         "mime_type": "image/jpeg",
         "size": "885681"
       },
@@ -734,7 +740,8 @@
         "id": "1N2u1FOZgrsa6FOMSdKjzfX5Igj7G75SU",
         "title": "AWS Summit_v15.mp4",
         "mime_type": "video/mp4",
-        "size": "511502125"
+        "size": "511502125",
+        "poster_time": 3
       },
       {
         "id": "1HQLHIxq2TePsBC6KB-gdL0GB8SS3I6J-",

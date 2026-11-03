@@ -37,7 +37,10 @@ async function download(file,target){
 }
 async function prepare(file){
  const video=file.mime_type.startsWith('video');const name=file.id+(video?'.mp4':'.webp');
- const fingerprint=file.id+'-'+file.size;const ready=path.join(cache,fingerprint+(video?'.mp4':'.webp'));const poster=path.join(cache,fingerprint+'-poster.webp');
+ const fingerprint=file.id+'-'+file.size;const ready=path.join(cache,fingerprint+(video?'.mp4':'.webp'));const poster=path.join(cache,fingerprint+(Number.isFinite(file.poster_time)?'-at-'+file.poster_time:'')+'-poster.webp');
+ if(video&&Number.isFinite(file.poster_time)&&await exists(ready)&&!await exists(poster)){
+  await run(ffmpeg,['-v','error','-threads','1','-filter_threads','1','-ss',String(Math.max(0.1,file.poster_time)),'-i',ready,'-frames:v','1','-vf','scale=1280:-2','-y',poster]);
+ }
  if(!await exists(ready)||video&&!await exists(poster)){
   const raw=path.join(cache,fingerprint+'.source');await download(file,raw);
   try{
@@ -46,7 +49,7 @@ async function prepare(file){
     await run(ffmpeg,['-v','error','-threads','2','-filter_threads','1','-i',raw,'-vf',"scale=w='min(1920,iw)':h='min(1920,ih)':force_original_aspect_ratio=decrease,scale=trunc(iw/2)*2:trunc(ih/2)*2",'-c:v','libx264','-preset','fast','-crf','23','-pix_fmt','yuv420p','-c:a','aac','-b:a','160k','-movflags','+faststart','-threads','2','-y',temp],{maxBuffer:2*1024*1024});
     await fs.rename(temp,ready);
     let duration=0;try{await run(ffmpeg,['-i',ready]);}catch(e){const m=e.stderr?.match(/Duration: (\d+):(\d+):([\d.]+)/);if(m)duration=+m[1]*3600 + +m[2]*60 + +m[3];}
-    await run(ffmpeg,['-v','error','-threads','1','-filter_threads','1','-ss',String(Math.max(0.1,duration*.25)),'-i',ready,'-frames:v','1','-vf','scale=1280:-2','-y',poster]);
+    await run(ffmpeg,['-v','error','-threads','1','-filter_threads','1','-ss',String(Math.max(0.1,file.poster_time??duration*.25)),'-i',ready,'-frames:v','1','-vf','scale=1280:-2','-y',poster]);
    }else await sharp(raw).rotate().resize({width:2560,height:2560,fit:'inside',withoutEnlargement:true}).webp({quality:90}).toFile(ready);
   }finally{await fs.rm(raw,{force:true});}
  }
@@ -56,3 +59,4 @@ async function prepare(file){
 const files=manifest.flatMap(p=>p.files);let cursor=0;
 await Promise.all(Array.from({length:2},async()=>{while(cursor<files.length)await prepare(files[cursor++]);}));
 console.log('Built',files.length,'portfolio media files.');
+
